@@ -1,0 +1,8 @@
+spring:
+  kafka:
+    address: localhost:9092
+
+app:
+  topic:
+    sku: sku
+    message: message
