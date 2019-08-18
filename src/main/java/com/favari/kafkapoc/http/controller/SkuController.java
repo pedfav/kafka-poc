@@ -1,6 +1,5 @@
 package com.favari.kafkapoc.http.controller;
 
-import com.favari.kafkapoc.config.kafka.MessageProducer;
 import com.favari.kafkapoc.entities.Sku;
 import com.favari.kafkapoc.http.mapping.UrlMapping;
 import com.favari.kafkapoc.usecases.SkuUseCase;
