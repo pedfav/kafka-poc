@@ -1,4 +1,4 @@
-package com.favari.kafkapoc.gateway.http.mapping;
+package com.favari.kafkapoc.http.mapping;
 
 public interface UrlMapping {
 

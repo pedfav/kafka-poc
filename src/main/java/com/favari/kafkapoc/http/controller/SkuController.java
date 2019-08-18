@@ -1,8 +1,9 @@
-package com.favari.kafkapoc.gateway.http.controller;
+package com.favari.kafkapoc.http.controller;
 
 import com.favari.kafkapoc.config.kafka.MessageProducer;
 import com.favari.kafkapoc.entities.Sku;
-import com.favari.kafkapoc.gateway.http.mapping.UrlMapping;
+import com.favari.kafkapoc.http.mapping.UrlMapping;
+import com.favari.kafkapoc.usecases.SkuUseCase;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -21,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(UrlMapping.SKU)
 public class SkuController {
 
-    private final MessageProducer producer;
+    private final SkuUseCase skuUseCase;
 
     @ApiOperation("Insert sku on kafka")
     @ApiResponses(value = {
@@ -30,7 +31,7 @@ public class SkuController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> receiveSku(@RequestBody final Sku sku) {
         log.debug("endpoint=SkuController#receiveSku={}", sku);
-        producer.sendSku(sku);
+        skuUseCase.send(sku);
         return ResponseEntity.ok().build();
     }
 }
