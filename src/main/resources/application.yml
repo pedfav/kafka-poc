@@ -1,6 +1,24 @@
 spring:
   kafka:
     address: localhost:9092
+  data:
+    cassandra:
+      contactpoints: 127.0.0.1
+      port: 9042
+      keyspace: kafkapoc
+  datasource:
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://localhost;databaseName=kafkapoc
+    username: sa
+    password: Your_password123
+    jpa:
+      generate-ddl: true
+      show-sql: true
+      properties:
+        hibernate:
+          format_sql: true
+          dialect: org.hibernate.dialect.SQLServer2012Dialect
+          ddl-auto: create
 
 app:
   topic:

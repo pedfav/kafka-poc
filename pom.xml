@@ -18,6 +18,8 @@
 		<java.version>1.8</java.version>
 		<springfox-swagger2.version>2.7.0</springfox-swagger2.version>
 		<slf4j-api.version>1.7.27</slf4j-api.version>
+		<cassandra-driver-extras.version>3.7.2</cassandra-driver-extras.version>
+		<metrics-core.version>3.0.2</metrics-core.version>
 	</properties>
 
 	<dependencies>
@@ -74,9 +76,26 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-autoconfigure</artifactId>
-			<version>2.1.7.RELEASE</version>
-			<scope>compile</scope>
+			<artifactId>spring-boot-starter-data-cassandra</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.datastax.cassandra</groupId>
+			<artifactId>cassandra-driver-extras</artifactId>
+			<version>${cassandra-driver-extras.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.codahale.metrics</groupId>
+			<artifactId>metrics-core</artifactId>
+			<version>${metrics-core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>sqljdbc4</artifactId>
+			<version>4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 	</dependencies>
 

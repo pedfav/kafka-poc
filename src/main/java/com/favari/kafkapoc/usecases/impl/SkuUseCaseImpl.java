@@ -1,7 +1,7 @@
 package com.favari.kafkapoc.usecases.impl;
 
 import com.favari.kafkapoc.config.kafka.MessageProducer;
-import com.favari.kafkapoc.entities.Sku;
+import com.favari.kafkapoc.entities.SkuCassandra;
 import com.favari.kafkapoc.usecases.SkuUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +14,7 @@ public class SkuUseCaseImpl implements SkuUseCase {
 
     private final MessageProducer producer;
 
-    public void send(Sku sku){
-        producer.sendSku(sku);
+    public void send(SkuCassandra skuCassandra){
+        producer.sendSku(skuCassandra);
     }
 }

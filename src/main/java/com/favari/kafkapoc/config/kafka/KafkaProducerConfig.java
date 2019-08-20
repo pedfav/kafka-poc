@@ -1,6 +1,6 @@
 package com.favari.kafkapoc.config.kafka;
 
-import com.favari.kafkapoc.entities.Sku;
+import com.favari.kafkapoc.entities.SkuCassandra;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -40,7 +40,7 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public ProducerFactory<String, Sku> skuProducerFactory() {
+    public ProducerFactory<String, SkuCassandra> skuProducerFactory() {
         Map<String, Object> configProps = new HashMap<>();
         configProps.put(JsonSerializer.ADD_TYPE_INFO_HEADERS, false);
         configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, address);
@@ -50,7 +50,7 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, Sku> skuKafkaTemplate() {
+    public KafkaTemplate<String, SkuCassandra> skuKafkaTemplate() {
         return new KafkaTemplate<>(skuProducerFactory());
     }
 }

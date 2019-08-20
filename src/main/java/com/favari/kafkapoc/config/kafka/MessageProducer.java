@@ -1,10 +1,8 @@
 package com.favari.kafkapoc.config.kafka;
 
-import com.favari.kafkapoc.entities.Sku;
+import com.favari.kafkapoc.entities.SkuCassandra;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;
@@ -17,7 +15,7 @@ public class MessageProducer {
 
     private final KafkaTemplate<String, String> kafkaTemplate;
 
-    private final KafkaTemplate<String, Sku> skuKafkaTemplate;
+    private final KafkaTemplate<String, SkuCassandra> skuKafkaTemplate;
 
     @Value(value = "${app.topic.sku}")
     private String topicSku;
@@ -41,11 +39,11 @@ public class MessageProducer {
             }
         });
     }
-    public void sendSku(Sku sku) {
-        skuKafkaTemplate.send(topicSku, buildKey(sku), sku);
+    public void sendSku(SkuCassandra skuCassandra) {
+        skuKafkaTemplate.send(topicSku, buildKey(skuCassandra), skuCassandra);
     }
 
-    private String buildKey(final Sku sku) {
-        return String.format("sku=%s", sku.getSku());
+    private String buildKey(final SkuCassandra skuCassandra) {
+        return String.format("sku=%s", skuCassandra.getSku());
     }
 }

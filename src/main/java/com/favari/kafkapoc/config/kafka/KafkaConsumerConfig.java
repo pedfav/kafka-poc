@@ -3,7 +3,7 @@ package com.favari.kafkapoc.config.kafka;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.favari.kafkapoc.entities.Sku;
+import com.favari.kafkapoc.entities.SkuCassandra;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -44,17 +44,17 @@ public class KafkaConsumerConfig {
         return kafkaListenerContainerFactory("foo");
     }
 
-    public ConsumerFactory<String, Sku> skuConsumerFactory() {
+    public ConsumerFactory<String, SkuCassandra> skuConsumerFactory() {
         Map<String, Object> props = new HashMap<>();
         props.put(JsonSerializer.ADD_TYPE_INFO_HEADERS, false);
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, address);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "sku");
-        return new DefaultKafkaConsumerFactory<>(props, new StringDeserializer(), new JsonDeserializer<>(Sku.class));
+        return new DefaultKafkaConsumerFactory<>(props, new StringDeserializer(), new JsonDeserializer<>(SkuCassandra.class));
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, Sku> skuKafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, Sku> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    public ConcurrentKafkaListenerContainerFactory<String, SkuCassandra> skuKafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, SkuCassandra> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(skuConsumerFactory());
         return factory;
     }

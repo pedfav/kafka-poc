@@ -1,6 +1,6 @@
 package com.favari.kafkapoc.gateway.kafka;
 
-import com.favari.kafkapoc.entities.Sku;
+import com.favari.kafkapoc.entities.SkuCassandra;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class Listener {
     @KafkaListener(topics = "${app.topic.sku}", containerFactory = "skuKafkaListenerContainerFactory")
-    public void skuListener(Sku sku) {
-        log.info("Received sku: " + sku);
+    public void skuListener(SkuCassandra skuCassandra) {
+        log.info("Received sku: " + skuCassandra);
     }
 
     @KafkaListener(topics = "${app.topic.message}", containerFactory = "fooKafkaListenerContainerFactory")

@@ -29,4 +29,11 @@ services:
       - "9160:9160"
     environment:
       JVM_OPTS: "-Xmx512m -Xms512m"
+  mssql:
+    image: "mcr.microsoft.com/mssql/server"
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "Your_password123"
+      ACCEPT_EULA: "Y"
 
