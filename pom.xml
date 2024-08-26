@@ -16,7 +16,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<springfox-swagger2.version>2.7.0</springfox-swagger2.version>
+		<springfox-swagger2.version>2.10.0</springfox-swagger2.version>
 		<slf4j-api.version>1.7.27</slf4j-api.version>
 		<cassandra-driver-extras.version>3.7.2</cassandra-driver-extras.version>
 		<metrics-core.version>3.0.2</metrics-core.version>
